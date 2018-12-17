@@ -1,10 +1,39 @@
-FROM linuxbrew/linuxbrew
+FROM japaric/x86_64-pc-windows-gnu
+
+RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list \
+ && apt-get update -qq \
+ && apt-get install -y -qq --no-install-recommends \
+ ca-certificates \
+ curl \
+ file \
+ g++ \
+ git \
+ locales \
+ make \
+ uuid-runtime \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* \
+ && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+ && useradd -m -s /bin/bash linuxbrew \
+ && echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+
+USER linuxbrew
+WORKDIR /home/linuxbrew
+ENV PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH \
+  SHELL=/bin/bash
+
+RUN git clone -q https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbrew/Homebrew \
+ && mkdir /home/linuxbrew/.linuxbrew/bin \
+ && ln -s ../Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/ \
+ && brew config
 
 RUN brew update \
  && brew install \
  curl \
  cmake \
+ yaml-cpp \
  boost \
+ gcc@6 \
  gcc@7 \
  gcc@8 \
  llvm@6
@@ -17,22 +46,7 @@ RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{} \
  && find /home/linuxbrew/.linuxbrew/lib/libcurl* \
   | awk -F/ '{print $NF}' \
-  | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{} \
- && find /home/linuxbrew/.linuxbrew/lib/libgmp* \
-  | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
-
-ENV CXX g++-8
-
-# Install yaml-cpp
-RUN git clone -q https://github.com/jbeder/yaml-cpp.git \
- && mkdir yaml-cpp/build \
- && cd yaml-cpp/build \
- && cmake .. \
- && make \
- && make install \
- && cd ../../ \
- && rm -rf yaml-cpp
 
 # Install CVC4
 RUN apt-get update -qq \
@@ -68,4 +82,4 @@ RUN apt-get update -qq \
        /usr/local/include/util \
        /usr/local/include/cvc4
 
-#USER linuxbrew
+ENTRYPOINT ["/windows-entry.sh"]
