@@ -6,8 +6,7 @@ RUN brew update \
  cmake \
  boost \
  gcc@7 \
- gcc@8 \
- llvm
+ gcc@8
 
 USER root
 
