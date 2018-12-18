@@ -7,7 +7,7 @@ RUN brew update \
  boost \
  gcc@7 \
  gcc@8 \
- llvm@6
+ llvm
 
 USER root
 
