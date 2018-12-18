@@ -1,5 +1,6 @@
 FROM japaric/i686-pc-windows-gnu
 
+
 RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list \
  && apt-get update -qq \
  && apt-get install -y -qq --no-install-recommends \
@@ -27,16 +28,13 @@ RUN git clone -q https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbre
  && ln -s ../Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/ \
  && brew config
 
+
 RUN brew update \
  && brew install \
  curl \
  cmake \
  yaml-cpp \
  boost \
- gcc@6 \
- gcc@7 \
- gcc@8 \
- llvm@6
 
 USER root
 
@@ -47,6 +45,18 @@ RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
  && find /home/linuxbrew/.linuxbrew/lib/libcurl* \
   | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
+
+
+# Install yaml-cpp
+RUN git clone -q https://github.com/jbeder/yaml-cpp.git \
+ && mkdir yaml-cpp/build \
+ && cd yaml-cpp/build \
+ && cmake .. \
+ && make \
+ && make install \
+ && cd ../../ \
+ && rm -rf yaml-cpp
+
 
 # Install CVC4
 RUN apt-get update -qq \

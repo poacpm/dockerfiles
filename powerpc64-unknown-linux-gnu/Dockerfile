@@ -1,4 +1,4 @@
-FROM japaric/x86_64-pc-windows-gnu
+FROM japaric/powerpc64-unknown-linux-gnu
 
 
 RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list \
@@ -91,5 +91,3 @@ RUN apt-get update -qq \
        /usr/local/include/theory \
        /usr/local/include/util \
        /usr/local/include/cvc4
-
-ENTRYPOINT ["/windows-entry.sh"]
