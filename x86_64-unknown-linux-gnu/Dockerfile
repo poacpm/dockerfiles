@@ -69,4 +69,9 @@ RUN apt-get update -qq \
  && cd ../../ \
  && rm -rf cvc4
 
+# Install symfpu
+RUN mkdir /usr/local/include/symfpu \
+ && cd /usr/local/include/symfpu \
+ && git clone -q https://github.com/martin-cs/symfpu.git -b CVC4
+
 #USER linuxbrew
