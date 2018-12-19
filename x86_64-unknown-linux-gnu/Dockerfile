@@ -67,8 +67,6 @@ RUN apt-get update -qq \
        /usr/local/include/util \
        /usr/local/include/cvc4 \
  && cd ../../ \
- && cp cvc4/src/include/cvc4_public.h /usr/local/include/cvc4/base \
- && cp cvc4/src/include/cvc4_public.h /usr/local/include/cvc4/expr \
  && rm -rf cvc4
 
 #USER linuxbrew
