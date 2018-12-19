@@ -1,8 +1,7 @@
 FROM japaric/powerpc64le-unknown-linux-gnu
 
 
-RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list \
- && apt-get update -qq \
+RUN apt-get update -qq \
  && apt-get install -y -qq --no-install-recommends \
  ca-certificates \
  curl \
