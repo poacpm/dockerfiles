@@ -65,6 +65,9 @@ RUN apt-get update -qq \
        /usr/local/include/smt_util \
        /usr/local/include/theory \
        /usr/local/include/util \
-       /usr/local/include/cvc4
+       /usr/local/include/cvc4 \
+ && cd ../../ \
+ && mv cvc4/src/include/cvc4_public.h /usr/local/include/cvc4 \
+ && rm -rf cvc4
 
 #USER linuxbrew
