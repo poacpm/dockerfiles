@@ -34,7 +34,7 @@ RUN brew update \
  curl \
  cmake \
  yaml-cpp \
- boost \
+ boost
 
 USER root
 
