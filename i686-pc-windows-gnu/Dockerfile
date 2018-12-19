@@ -59,7 +59,8 @@ RUN git clone -q https://github.com/jbeder/yaml-cpp.git \
 
 
 # Install CVC4
-RUN apt-get update -qq \
+RUN add-apt-repository ppa:openjdk-r/ppa -y \
+ && apt-get update -qq \
  && apt-get install -y -qq openjdk-8-jdk m4 \
  && git clone -q https://github.com/cvc4/cvc4 \
  && cd cvc4/ \
