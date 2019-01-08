@@ -16,9 +16,6 @@ RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{} \
  && find /home/linuxbrew/.linuxbrew/lib/libcurl* \
   | awk -F/ '{print $NF}' \
-  | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{} \
- && find /home/linuxbrew/.linuxbrew/lib/libgmp* \
-  | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
 
 ENV CXX g++-8
