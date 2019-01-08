@@ -1,4 +1,4 @@
-FROM japaric/aarch64-unknown-linux-gnu
+FROM aarch64/ubuntu:16.04
 
 
 RUN apt-get update -qq \
@@ -27,13 +27,14 @@ RUN git clone -q https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbre
  && ln -s ../Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/ \
  && brew config
 
-
 RUN brew update \
  && brew install \
  curl \
  cmake \
  yaml-cpp \
- boost
+ boost \
+ gcc@8
+
 
 USER root
 
@@ -45,6 +46,7 @@ RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
   | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
 
+ENV CXX g++-8
 
 # Install yaml-cpp
 RUN git clone -q https://github.com/jbeder/yaml-cpp.git \
