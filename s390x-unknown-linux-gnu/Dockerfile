@@ -1,6 +1,7 @@
 FROM s390x/ubuntu:16.04
 
 
+SHELL ["/bin/bash", "-c"]
 RUN apt-get update -qq \
  && apt-get install -y -qq --no-install-recommends \
  ca-certificates \
