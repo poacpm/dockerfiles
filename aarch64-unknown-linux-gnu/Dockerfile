@@ -5,7 +5,6 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update -qq \
  && apt-get install -y -qq --no-install-recommends \
  ca-certificates \
- curl \
  file \
  g++ \
  git \
@@ -30,7 +29,6 @@ RUN git clone -q https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbre
 
 RUN brew update \
  && brew install \
- curl \
  cmake \
  yaml-cpp \
  boost \
@@ -41,9 +39,6 @@ USER root
 
 RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
  && find /home/linuxbrew/.linuxbrew/lib/libboost_* \
-  | awk -F/ '{print $NF}' \
-  | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{} \
- && find /home/linuxbrew/.linuxbrew/lib/libcurl* \
   | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
 

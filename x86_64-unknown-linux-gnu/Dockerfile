@@ -2,7 +2,6 @@ FROM linuxbrew/linuxbrew
 
 RUN brew update \
  && brew install \
- curl \
  cmake \
  boost \
  gcc@7 \
@@ -12,9 +11,6 @@ USER root
 
 RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
  && find /home/linuxbrew/.linuxbrew/lib/libboost_* \
-  | awk -F/ '{print $NF}' \
-  | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{} \
- && find /home/linuxbrew/.linuxbrew/lib/libcurl* \
   | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
 
