@@ -5,7 +5,8 @@ RUN brew update \
  cmake \
  boost \
  gcc@7 \
- gcc@8
+ gcc@8 \
+ gcc@9
 
 USER root
 
@@ -14,7 +15,7 @@ RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
   | awk -F/ '{print $NF}' \
   | xargs -I{} ln -s /home/linuxbrew/.linuxbrew/lib/{} /usr/local/lib/{}
 
-ENV CXX g++-8
+ENV CXX g++-9
 
 # Install yaml-cpp
 RUN git clone -q https://github.com/jbeder/yaml-cpp.git \
