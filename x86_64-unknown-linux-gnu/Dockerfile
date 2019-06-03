@@ -18,7 +18,7 @@ RUN ln -s /home/linuxbrew/.linuxbrew/include/boost /usr/local/include/boost \
 ENV CXX g++-9
 
 # Install yaml-cpp
-RUN git clone -q https://github.com/jbeder/yaml-cpp.git \
+RUN git clone -q https://github.com/jbeder/yaml-cpp.git -b yaml-cpp-0.6.2 \
  && mkdir yaml-cpp/build \
  && cd yaml-cpp/build \
  && cmake .. \
