@@ -21,7 +21,7 @@ ENV CXX g++-9
 RUN git clone -q https://github.com/jbeder/yaml-cpp.git -b yaml-cpp-0.6.2 \
  && mkdir yaml-cpp/build \
  && cd yaml-cpp/build \
- && cmake .. \
+ && cmake -DYAML_CPP_BUILD_TESTS=OFF .. \
  && make \
  && make install \
  && cd ../../ \
