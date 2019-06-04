@@ -1,7 +1,7 @@
 FROM ubuntu:19.04
 
 RUN apt-get update \
- && apt-get install -y git cmake g++-9-powerpc-linux-gnu \
+ && apt-get install -y git cmake g++-9-powerpc-linux-gnu file \
  && ln -s /usr/bin/powerpc-linux-gnu-g++-9 /usr/bin/g++ \
  && ln -s /usr/bin/powerpc-linux-gnu-gcc-9 /usr/bin/powerpc-linux-gnu-gcc
 
