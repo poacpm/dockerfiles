@@ -7,7 +7,7 @@ RUN apt-get update \
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
- && ./Configure linux-ppc64le --shared -fPIC --prefix=/usr/local/ --cross-compile-prefix=powerpc64le-linux-gnu- \
+ && ./Configure linux-ppc64le -static --cross-compile-prefix=powerpc64le-linux-gnu- \
  && make \
  && make install \
  && cd ../ \
