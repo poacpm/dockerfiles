@@ -1,7 +1,7 @@
 FROM ubuntu:19.04
 
 RUN apt-get update \
- && apt-get install -y git cmake g++-9-mips-linux-gnu file \
+ && apt-get install -y git cmake g++-9-mips-linux-gnu file pkg-config \
  && ln -s /usr/bin/mips-linux-gnu-g++-9 /usr/bin/g++ \
  && ln -s /usr/bin/mips-linux-gnu-gcc-9 /usr/bin/mips-linux-gnu-gcc
 
