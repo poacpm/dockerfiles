@@ -2,8 +2,8 @@ FROM ubuntu:19.04
 
 RUN apt-get update \
  && apt-get install -y git cmake g++-9-powerpc-linux-gnu file pkg-config \
- && ln -s /usr/bin/powerpc-linux-gnu-g++-9 /usr/bin/g++ \
- && ln -s /usr/bin/powerpc-linux-gnu-gcc-9 /usr/bin/powerpc-linux-gnu-gcc
+ && ln -sf /usr/bin/powerpc-linux-gnu-g++-9 /usr/bin/g++ \
+ && ln -sf /usr/bin/powerpc-linux-gnu-gcc-9 /usr/bin/powerpc-linux-gnu-gcc
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
