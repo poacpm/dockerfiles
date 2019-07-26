@@ -22,12 +22,12 @@ RUN git clone -q -b boost-1.70.0 --recursive https://github.com/boostorg/boost.g
 
 ENV CXX mips-linux-gnu-g++-9
 
-RUN git clone -q -b yaml-cpp-0.6.2 https://github.com/jbeder/yaml-cpp.git \
- && cd yaml-cpp \
- && mkdir build \
- && cd build \
- && cmake -DYAML_CPP_BUILD_TESTS=OFF .. \
- && make \
- && make install \
- && cd ../../ \
- && rm -rf yaml-cpp
+RUN git clone -q -b v3.0.0 https://github.com/ToruNiina/toml11.git
+ && cd toml11
+ && mkdir build
+ && cd build
+ && cmake -Dtoml11_BUILD_TEST=OFF ..
+ && make
+ && make install
+ && cd ../../
+ && rm -rf toml11
