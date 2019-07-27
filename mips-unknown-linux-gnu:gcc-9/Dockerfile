@@ -20,8 +20,6 @@ RUN git clone -q -b boost-1.70.0 --recursive https://github.com/boostorg/boost.g
  && cd ../ \
  && rm -rf boost
 
-ENV CXX mips-linux-gnu-g++-9
-
 RUN git clone -q -b v3.0.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
  && mkdir build \
@@ -31,3 +29,16 @@ RUN git clone -q -b v3.0.0 https://github.com/ToruNiina/toml11.git \
  && make install \
  && cd ../../ \
  && rm -rf toml11
+
+RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
+ && cd libgit2 \
+ && mkdir build \
+ && cd build \
+ && cmake .. \
+ && make \
+ && make install \
+ && cd ../../ \
+ && rm -rf libgit2
+
+ENV CXX mips-linux-gnu-g++-9
+
