@@ -34,7 +34,7 @@ RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
  && cd libgit2 \
  && mkdir build \
  && cd build \
- && cmake -DBUILD_CLAR=OFF .. \
+ && cmake -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF .. \
  && make \
  && make install \
  && cd ../../ \
