@@ -21,6 +21,7 @@ RUN git clone -q -b boost-1.70.0 --recursive https://github.com/boostorg/boost.g
  && rm -rf boost
 
 ENV CXX mips-linux-gnu-g++-9
+ENV CC mips-linux-gnu-gcc
 
 RUN git clone -q -b v3.0.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \

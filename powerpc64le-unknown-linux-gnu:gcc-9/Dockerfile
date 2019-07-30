@@ -21,12 +21,13 @@ RUN git clone -q -b boost-1.70.0 --recursive https://github.com/boostorg/boost.g
  && rm -rf boost
 
 ENV CXX powerpc64le-linux-gnu-g++-9
+ENV CC powerpc64le-linux-gnu-gcc
 
 RUN git clone -q -b v3.0.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
  && mkdir build \
  && cd build \
- && cmake -Dtoml11_BUILD_TEST=OFF .. \
+ && cmake -DCMAKE_BUILD_TYPE=Release -Dtoml11_BUILD_TEST=OFF .. \
  && make \
  && make install \
  && cd ../../ \
@@ -36,7 +37,7 @@ RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
  && cd libgit2 \
  && mkdir build \
  && cd build \
- && cmake -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF .. \
+ && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF .. \
  && make \
  && make install \
  && cd ../../ \
