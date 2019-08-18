@@ -3,7 +3,7 @@ FROM ubuntu:19.04
 RUN apt-get update \
  && apt-get install -y git cmake libboost-all-dev libssl-dev libgit2-dev clang-6.0 pkg-config
 
-RUN git clone -q -b v3.0.0 https://github.com/ToruNiina/toml11.git \
+RUN git clone -q -b v3.0.1 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
  && mkdir build \
  && cd build \
