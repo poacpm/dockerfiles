@@ -2,7 +2,6 @@ FROM ubuntu:19.04
 
 RUN apt-get update \
  && apt-get install -y git cmake g++-9-powerpc64-linux-gnu file pkg-config \
- && ln -sf /usr/bin/powerpc64-linux-gnu-g++-9 /usr/bin/g++ \
  && ln -sf /usr/bin/powerpc64-linux-gnu-gcc-9 /usr/bin/powerpc64-linux-gnu-gcc
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
@@ -15,7 +14,9 @@ RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
 
 RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.git \
  && cd boost \
+ && apt-get update && apt-get install -y g++-9 && ln -sf /usr/bin/g++-9 /usr/bin/g++ \
  && ./bootstrap.sh \
+ && rm -rf /usr/bin/g++ && ln -sf /usr/bin/powerpc64-linux-gnu-g++-9 /usr/bin/g++ \
  && ./b2 link=static install -j2 \
  && cd ../ \
  && rm -rf boost
