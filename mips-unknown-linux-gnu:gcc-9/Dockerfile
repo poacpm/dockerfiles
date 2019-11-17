@@ -1,7 +1,7 @@
 FROM ubuntu:19.04
 
 RUN apt-get update \
- && apt-get install -y git cmake g++-9-mips-linux-gnu file pkg-config \
+ && apt-get install -y -qq git cmake g++-9-mips-linux-gnu file pkg-config \
  && ln -sf /usr/bin/mips-linux-gnu-gcc-9 /usr/bin/mips-linux-gnu-gcc
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
