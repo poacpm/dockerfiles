@@ -1,7 +1,7 @@
 FROM ubuntu:19.04
 
-RUN apt-get update \
- && apt-get install -y -qq git cmake libboost-all-dev libssl-dev libgit2-dev clang pkg-config
+RUN apt-get -qq update \
+ && apt-get install -y -qq git cmake libboost-all-dev libssl-dev libgit2-dev clang-8 pkg-config
 
 RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
