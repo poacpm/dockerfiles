@@ -1,4 +1,4 @@
-FROM ubuntu:19.04
+FROM ubuntu:19.10
 
 RUN apt-get -qq update \
  && apt-get install -y -qq git cmake g++-9-powerpc64-linux-gnu file pkg-config \
