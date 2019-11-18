@@ -13,4 +13,4 @@ RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd ../../ \
  && rm -rf toml11
 
-ENV CXX clang++
+ENV CXX clang++-8
