@@ -8,7 +8,7 @@ ENV CC clang-7
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
- && ./Configure -static \
+ && ./config no-shared \
  && make \
  && make install \
  && cd ../ \
