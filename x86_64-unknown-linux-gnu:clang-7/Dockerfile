@@ -3,8 +3,8 @@ FROM ubuntu:19.10
 RUN apt-get -qq update \
  && apt-get install -y -qq git cmake clang-7 file pkg-config
 
-ENV CXX clang++-7
 ENV CC clang-7
+ENV CXX clang++-7
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
