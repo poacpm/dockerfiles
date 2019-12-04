@@ -1,7 +1,7 @@
 FROM ubuntu:19.10
 
 RUN apt-get -qq update \
- && apt-get install -y -qq git cmake g++-9-powerpc-linux-gnu file pkg-config \
+ && apt-get install -y -qq file pkg-config git cmake g++-9-powerpc-linux-gnu \
  && ln -sf /usr/bin/powerpc-linux-gnu-gcc-9 /usr/bin/powerpc-linux-gnu-gcc
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
@@ -21,15 +21,14 @@ RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.g
  && cd ../ \
  && rm -rf boost
 
-ENV CXX powerpc-linux-gnu-g++-9
 ENV CC powerpc-linux-gnu-gcc
+ENV CXX powerpc-linux-gnu-g++-9
 
 RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
  && mkdir build \
  && cd build \
  && cmake -DCMAKE_BUILD_TYPE=Release -Dtoml11_BUILD_TEST=OFF .. \
- && make \
  && make install \
  && cd ../../ \
  && rm -rf toml11
