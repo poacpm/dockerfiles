@@ -1,7 +1,7 @@
 FROM ubuntu:19.10
 
 RUN apt-get -qq update \
- && apt-get install -y -qq git cmake g++-9 file pkg-config
+ && apt-get install -y -qq file pkg-config git cmake g++-9
 
 ENV CC gcc-9
 ENV CXX g++-9
@@ -26,7 +26,6 @@ RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && mkdir build \
  && cd build \
  && cmake -DCMAKE_BUILD_TYPE=Release -Dtoml11_BUILD_TEST=OFF .. \
- && make \
  && make install \
  && cd ../../ \
  && rm -rf toml11
