@@ -6,14 +6,16 @@ RUN apt-get -qq update \
 ENV CC gcc-9
 ENV CXX g++-9
 
+# static,shared
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
- && ./config no-shared \
+ && ./config shared \
  && make \
  && make install \
  && cd ../ \
  && rm -rf openssl
 
+# static
 RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.git \
  && cd boost \
  && ./bootstrap.sh \
@@ -21,6 +23,7 @@ RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.g
  && cd ../ \
  && rm -rf boost
 
+# header-only
 RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
  && mkdir build \
@@ -30,11 +33,12 @@ RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd ../../ \
  && rm -rf toml11
 
+# static,shared
 RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
  && cd libgit2 \
  && mkdir build \
  && cd build \
- && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF .. \
+ && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_CLAR=OFF .. \
  && make \
  && make install \
  && cd ../../ \
