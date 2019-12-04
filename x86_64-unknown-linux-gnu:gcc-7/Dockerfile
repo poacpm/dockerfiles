@@ -8,7 +8,7 @@ ENV CXX g++-7
 
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
- && ./config no-shared \
+ && ./config shared \
  && make \
  && make install \
  && cd ../ \
@@ -34,7 +34,7 @@ RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
  && cd libgit2 \
  && mkdir build \
  && cd build \
- && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF .. \
+ && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_CLAR=OFF .. \
  && make \
  && make install \
  && cd ../../ \
