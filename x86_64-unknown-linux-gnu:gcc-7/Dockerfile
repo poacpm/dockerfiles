@@ -6,6 +6,7 @@ RUN apt-get -qq update \
 ENV CC gcc-7
 ENV CXX g++-7
 
+# static,shared
 RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd openssl \
  && ./config shared \
@@ -14,6 +15,7 @@ RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd ../ \
  && rm -rf openssl
 
+# static
 RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.git \
  && cd boost \
  && ./bootstrap.sh \
@@ -21,6 +23,7 @@ RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.g
  && cd ../ \
  && rm -rf boost
 
+# header-only
 RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd toml11 \
  && mkdir build \
@@ -30,6 +33,7 @@ RUN git clone -q -b v3.1.0 https://github.com/ToruNiina/toml11.git \
  && cd ../../ \
  && rm -rf toml11
 
+# static,shared
 RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
  && cd libgit2 \
  && mkdir build \
