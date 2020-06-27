@@ -34,7 +34,7 @@ RUN git clone -q -b v3.4.0 https://github.com/ToruNiina/toml11.git \
  && rm -rf toml11
 
 # static,shared
-RUN git clone -q -b v0.28.2 https://github.com/libgit2/libgit2.git \
+RUN git clone -q -b v1.0.1 https://github.com/libgit2/libgit2.git \
  && cd libgit2 \
  && mkdir build \
  && cd build \
