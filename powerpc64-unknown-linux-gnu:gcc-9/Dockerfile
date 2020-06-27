@@ -12,7 +12,7 @@ RUN git clone -q -b OpenSSL_1_1_1b https://github.com/openssl/openssl.git \
  && cd ../ \
  && rm -rf openssl
 
-RUN git clone -q -b boost-1.71.0 --recursive https://github.com/boostorg/boost.git \
+RUN git clone -q -b boost-1.73.0 --recursive https://github.com/boostorg/boost.git \
  && cd boost \
  && apt-get update && apt-get install -y g++-9 && ln -sf /usr/bin/g++-9 /usr/bin/g++ \
  && ./bootstrap.sh \
