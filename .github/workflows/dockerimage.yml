@@ -10,15 +10,15 @@ jobs:
         compiler: [clang-7, clang-8, clang-9, gcc-7, gcc-8, gcc-9]
     steps:
     - uses: actions/checkout@v1
-    - name: Build and Publish to Registry
-      uses: jerray/publish-docker-action@master
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/x86_64-unknown-linux-gnu
-        tags: ${{ matrix.compiler }}
-        file: x86_64-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
+#    - name: Build and Publish to Registry
+#      uses: jerray/publish-docker-action@master
+#      with:
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.GITHUB_TOKEN }}
+#        registry: docker.pkg.github.com
+#        repository: ${{ github.repository }}/x86_64-unknown-linux-gnu
+#        tags: ${{ matrix.compiler }}
+#        file: x86_64-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
 
   powerpc-unknown-linux-gnu:
     runs-on: ubuntu-latest
@@ -27,15 +27,15 @@ jobs:
         compiler: [gcc-9]
     steps:
     - uses: actions/checkout@v1
-    - name: Build and Publish to Registry
-      uses: jerray/publish-docker-action@master
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/powerpc-unknown-linux-gnu
-        tags: ${{ matrix.compiler }}
-        file: powerpc-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
+#    - name: Build and Publish to Registry
+#      uses: jerray/publish-docker-action@master
+#      with:
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.GITHUB_TOKEN }}
+#        registry: docker.pkg.github.com
+#        repository: ${{ github.repository }}/powerpc-unknown-linux-gnu
+#        tags: ${{ matrix.compiler }}
+#        file: powerpc-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
 
   powerpc64-unknown-linux-gnu:
     runs-on: ubuntu-latest
@@ -44,15 +44,15 @@ jobs:
         compiler: [gcc-9]
     steps:
     - uses: actions/checkout@v1
-    - name: Build and Publish to Registry
-      uses: jerray/publish-docker-action@master
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/powerpc64-unknown-linux-gnu
-        tags: ${{ matrix.compiler }}
-        file: powerpc64-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
+#    - name: Build and Publish to Registry
+#      uses: jerray/publish-docker-action@master
+#      with:
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.GITHUB_TOKEN }}
+#        registry: docker.pkg.github.com
+#        repository: ${{ github.repository }}/powerpc64-unknown-linux-gnu
+#        tags: ${{ matrix.compiler }}
+#        file: powerpc64-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
 
   powerpc64le-unknown-linux-gnu:
     runs-on: ubuntu-latest
@@ -61,12 +61,12 @@ jobs:
         compiler: [gcc-9]
     steps:
     - uses: actions/checkout@v1
-    - name: Build and Publish to Registry
-      uses: jerray/publish-docker-action@master
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/powerpc64le-unknown-linux-gnu
-        tags: ${{ matrix.compiler }}
-        file: powerpc64le-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
+#    - name: Build and Publish to Registry
+#      uses: jerray/publish-docker-action@master
+#      with:
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.GITHUB_TOKEN }}
+#        registry: docker.pkg.github.com
+#        repository: ${{ github.repository }}/powerpc64le-unknown-linux-gnu
+#        tags: ${{ matrix.compiler }}
+#        file: powerpc64le-unknown-linux-gnu:${{ matrix.compiler }}/Dockerfile
